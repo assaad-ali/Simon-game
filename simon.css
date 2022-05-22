@@ -1,0 +1,56 @@
+body{
+    margin: 0;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgb(12, 34, 75);
+}
+
+.level{
+    margin-top: 100px;
+    margin-bottom: 70px;
+    display: flex;
+    justify-content: center;
+    width: cover;
+    height: 100px;
+    color: azure;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 50px;
+    text-align: center;
+}
+
+.game{
+    width: 350px;
+    height: 350px;
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 150px;
+    justify-content: space-between ;
+}
+
+.game > div {
+    width: 150px;
+    height: 150px;
+    border: 7px solid black;
+    border-radius: 20%;
+}
+
+.green-box{
+    background-color: green;
+
+}
+
+.red-box{
+    background-color: red;
+
+}
+
+.yellow-box{
+    background-color: yellow;
+
+}
+
+.blue-box{
+    background-color: blue;
+    
+}
