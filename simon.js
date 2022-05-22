@@ -14,28 +14,27 @@ function onBoxClick(event){
 
     let boxId = event.target.id
 
+    play_sound(boxId)
+    blinkBox(boxId)
+
     if(playing){
 
         if (boxId == gameMemory[clickCounter]){
-            
-            play_sound(boxId)
-            blinkBox(boxId)
+
             clickCounter += 1
+
+            if (clickCounter == gameMemory.length){
+                //all matches
+                advanceGame()
+            }
         }
+
         else{
 
             endGame()
-
-        }
-    
-        
-        if (clickCounter == gameMemory.length){
-            //all matches
-            advanceGame()
         }
     }   
 }
-
 function startGame(){
 
     playing = true
@@ -52,11 +51,40 @@ function pickRandomBox(){
     let boxId = boxIds[boxIndex]
     gameMemory[gameMemory.length] = boxId
     
+    console.log("pick box ", gameMemory)
     play_sound(boxId)
     blinkBox(boxId)
 
-    console.log("pick box ", gameMemory)
+    
 
+}
+
+function endGame(){
+
+    console.log("end")
+    playing = false
+    levelCounter = 1
+    gameMemory = []
+    displayGameOver()
+    addPressAnyKeyListener()
+}
+
+function advanceGame(){
+
+    clickCounter = 0
+    levelCounter ++
+    pickRandomBox()
+    updateLevelMessage()
+}
+
+function play_sound(){
+
+    console.log("play sound")
+}
+
+function blinkBox(){
+
+    console.log("blink box")
 }
 
 function displayStartGameMessage(){
@@ -69,23 +97,9 @@ function updateLevelMessage(){
     document.getElementById("level").textContent = "Level " + levelCounter
 } 
 
-function endGame(){
+function displayGameOver(){
 
-    console.log("end")
-}
-
-function advanceGame(){
-
-    console.log("advance")
-}
-function play_sound(){
-
-    console.log("play sound")
-}
-
-function blinkBox(){
-
-    console.log("blink box")
+    document.getElementById("level").textContent = "Game Over, Press Any Key To Restart"
 }
 /********************* Events Listeners /**********************/
 
@@ -110,7 +124,7 @@ function removePressAnyKeyListener(){
 // intialize game
 function initSimon(){
 
-    // displayStartGameMessage()
+    displayStartGameMessage()
     addPressAnyKeyListener()
     addStartGameListeners()
 }
