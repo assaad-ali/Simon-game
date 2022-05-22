@@ -11,14 +11,23 @@ var boxIds = ["green-box","red-box","yellow-box","blue-box"]
 /********************* Functions /**********************/
 
 function onBoxClick(event){
+
+    let boxId = event.target.id
+
     if(playing){
 
-        if (event.target.id != gameMemory[clickCounter]){
+        if (boxId == gameMemory[clickCounter]){
+            
+            play_sound(boxId)
+            blinkBox(boxId)
+            clickCounter += 1
+        }
+        else{
 
             endGame()
+
         }
     
-        clickCounter += 1
         
         if (clickCounter == gameMemory.length){
             //all matches
@@ -34,6 +43,7 @@ function startGame(){
     pickRandomBox()
     updateLevelMessage()
     removePressAnyKeyListener()
+    console.log('start game')
 }
 
 function pickRandomBox(){
@@ -45,8 +55,37 @@ function pickRandomBox(){
     play_sound(boxId)
     blinkBox(boxId)
 
-    // console.log(gameMemory)
+    console.log("pick box ", gameMemory)
 
+}
+
+function displayStartGameMessage(){
+
+    document.getElementById("level").textContent = "Press Any Key To Start"
+}
+
+function updateLevelMessage(){
+
+    document.getElementById("level").textContent = "Level " + levelCounter
+} 
+
+function endGame(){
+
+    console.log("end")
+}
+
+function advanceGame(){
+
+    console.log("advance")
+}
+function play_sound(){
+
+    console.log("play sound")
+}
+
+function blinkBox(){
+
+    console.log("blink box")
 }
 /********************* Events Listeners /**********************/
 
@@ -71,7 +110,7 @@ function removePressAnyKeyListener(){
 // intialize game
 function initSimon(){
 
-    displayStartGameMessage()
+    // displayStartGameMessage()
     addPressAnyKeyListener()
     addStartGameListeners()
 }
