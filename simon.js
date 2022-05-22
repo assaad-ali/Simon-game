@@ -8,6 +8,24 @@ var gameMemory = []
 
 var boxIds = ["green-box","red-box","yellow-box","blue-box"]
 
+/********************* Functions /**********************/
+
+function onBoxClick(event){
+    if(playing){
+
+        if (event.target.id != gameMemory[clickCounter]){
+
+            endGame()
+        }
+    
+        clickCounter += 1
+        
+        if (clickCounter == gameMemory.length){
+            //all matches
+            advanceGame()
+        }
+    }   
+}
 
 /********************* Events Listeners /**********************/
 
