@@ -27,13 +27,22 @@ function onBoxClick(event){
     }   
 }
 
+function startGame(){
+
+    playing = true
+    clickCounter = 0
+    pickRandomBox()
+    updateLevelMessage()
+    removePressAnyKeyListener()
+    console.log('start game')
+}
+
 /********************* Events Listeners /**********************/
 
 function addStartGameListeners(){
 
     for(i = 0; i < boxes.length; i++){
 
-        console.log(boxes[i])
         boxes[i].addEventListener('click', onBoxClick)
     }
 }
