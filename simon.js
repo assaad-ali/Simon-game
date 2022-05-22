@@ -34,9 +34,20 @@ function startGame(){
     pickRandomBox()
     updateLevelMessage()
     removePressAnyKeyListener()
-    console.log('start game')
 }
 
+function pickRandomBox(){
+
+    let boxIndex = Math.floor(Math.random() * 3)
+    let boxId = boxIds[boxIndex]
+    gameMemory[gameMemory.length] = boxId
+    
+    play_sound(boxId)
+    blinkBox(boxId)
+
+    // console.log(gameMemory)
+
+}
 /********************* Events Listeners /**********************/
 
 function addStartGameListeners(){
