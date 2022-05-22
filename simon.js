@@ -6,7 +6,11 @@ var clickCounter = 0
 var levelCounter = 1
 var gameMemory = []
 
+
 var boxIds = ["green-box","red-box","yellow-box","blue-box"]
+
+// var audio = new Audio()
+// audio.src = "sounds/green.mp3"
 
 /********************* Functions /**********************/
 
@@ -67,6 +71,8 @@ function endGame(){
     gameMemory = []
     displayGameOver()
     addPressAnyKeyListener()
+    
+    document.body.classList.add("lost")
 }
 
 function advanceGame(){
@@ -76,7 +82,7 @@ function advanceGame(){
     pickRandomBox()
     updateLevelMessage()
 }
-
+ 
 function play_sound(){
 
     console.log("play sound")
